@@ -1,0 +1,16 @@
+version: "3.9"
+name: so_microservice_db
+services:
+  db:
+    image: mariadb:10.5
+    container_name: microservice_db
+    volumes:
+      - ./.docker/mysql:/var/lib/mysql:rw
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: test
+      MYSQL_DATABASE: so_microservice_db
+    ports:
+      - "6699:3306"
+    restart: unless-stopped
